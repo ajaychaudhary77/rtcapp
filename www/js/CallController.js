@@ -127,6 +127,7 @@
 
 	    $scope.answer = function(){
 	    	//alert($scope.callInProgress);
+			alert('Call Answered');
 	      if($scope.callInProgress){ 
 	      	return; 
 	      }
