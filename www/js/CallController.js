@@ -41,21 +41,22 @@
 				},
 				streams: {
 				  audio: true,
-				  video: true
+				  video: false
 				}
 			};
-			var phonertc = cordova.require('com.dooble.phonertc.PhoneRTC');
+			
 			try{
+				var phonertc = cordova.require('com.dooble.phonertc.PhoneRTC');
 				//session = new cordova.plugins.phonertc.Session(config);
 				var session = new phonertc.Session(config);
 
-				phonertc.setVideoView({
+				/*phonertc.setVideoView({
 				    container: document.getElementById('video'),
 				    local: {
 				        position: [0, 0],
 				        size: [100, 100]
 				    }
-				});
+				});*/
 					session.on('sendMessage', function(data){ 
 					
 					SocketService.emit('sendMessage', {
@@ -135,10 +136,10 @@
 	      $scope.callInProgress = true;
 
 	      call(false, $scope.peer_id); 
-		  setTimeout($scope.updateVideoPosition, 1000);
-	      setTimeout(function(){
+		  //setTimeout($scope.updateVideoPosition, 1000);
+	      //setTimeout(function(){
 	        SocketService.emit('sendMessage', { 'id': id, 'peer_id': $scope.peer_id, 'type': 'answer' });
-	      }, 1500);
+	      //}, 1500);
 	    };
 
 
